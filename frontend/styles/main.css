@@ -1,0 +1,421 @@
+/* ===== Hide Streamlit defaults ===== */
+#MainMenu, header, footer { visibility: hidden; }
+.stDeployButton { display: none; }
+[data-testid="stToolbar"] { display: none; }
+[data-testid="stDecoration"] { display: none; }
+
+/* ===== Reset — 100vh with scroll ===== */
+html, body, [data-testid="stAppViewContainer"], [data-testid="stApp"],
+.stApp, .main, .block-container {
+    height: 100vh !important;
+    max-height: 100vh !important;
+    overflow: auto !important;
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+/* ===== Root variables — Dark ===== */
+:root {
+    --bg: #0F1115;
+    --card: #171A21;
+    --border: #292E38;
+    --text: #F5F7FA;
+    --muted: #9299A5;
+    --accent: #6366F1;
+    --accent-hover: #818CF8;
+    --success: #22C55E;
+    --user-bubble: #1E1B4B;
+    --danger: #EF4444;
+}
+/* ===== Root variables — Light ===== */
+:root[data-theme="light"] {
+    --bg: #FFFFFF;
+    --card: #F5F5F5;
+    --border: #E5E7EB;
+    --text: #111827;
+    --muted: #6B7280;
+    --accent: #6366F1;
+    --accent-hover: #4F46E5;
+    --success: #16A34A;
+    --user-bubble: #EEF2FF;
+    --danger: #DC2626;
+}
+
+/* ===== App background ===== */
+.stApp { background-color: var(--bg) !important; }
+section[data-testid="stSidebar"] {
+    background-color: var(--card) !important;
+    border-right: 1px solid var(--border) !important;
+}
+
+/* ===== Main container — fill viewport ===== */
+.main-container {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    box-sizing: border-box;
+}
+
+/* ===== Center content ===== */
+.center-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    gap: 1.2rem;
+    width: 100%;
+    max-width: 560px;
+}
+
+/* ===== Typography ===== */
+.brand {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--accent);
+    letter-spacing: 0.5px;
+}
+.page-title {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--text);
+    margin: 0;
+    line-height: 1.2;
+}
+.page-subtitle {
+    font-size: 1rem;
+    color: var(--muted);
+    margin: 0;
+}
+
+/* ===== File uploader — styled as the upload zone ===== */
+[data-testid="stFileUploader"] {
+    border: 2px dashed var(--border) !important;
+    border-radius: 12px !important;
+    padding: 2.5rem 2rem !important;
+    background: var(--card) !important;
+    transition: border-color 0.2s, background 0.2s !important;
+    max-width: 480px !important;
+    margin: 0 auto !important;
+}
+[data-testid="stFileUploader"]:hover,
+[data-testid="stFileUploader"]:focus-within {
+    border-color: var(--accent) !important;
+    background: rgba(99,102,241,0.06) !important;
+}
+[data-testid="stFileUploader"] header { display: none !important; }
+[data-testid="stFileUploader"] [data-testid="stBaseButton-secondary"],
+[data-testid="stFileUploader"] button {
+    background: var(--accent) !important;
+    color: #fff !important;
+    border: none !important;
+    border-radius: 8px !important;
+    padding: 0.5rem 1.5rem !important;
+    font-weight: 600 !important;
+    font-size: 0.85rem !important;
+}
+[data-testid="stFileUploader"] [data-testid="stBaseButton-secondary"]:hover,
+[data-testid="stFileUploader"] button:hover {
+    background: var(--accent-hover) !important;
+}
+[data-testid="stFileUploader"] small {
+    color: var(--muted) !important;
+    font-size: 0.82rem !important;
+}
+[data-testid="stFileUploader"] [data-testid="file-icon"] {
+    color: var(--accent) !important;
+}
+[data-testid="stFileUploader"] [data-testid="fileName"],
+[data-testid="stFileUploader"] [data-testid="fileDetails"] {
+    color: var(--text) !important;
+}
+[data-testid="stFileUploader"] p {
+    color: var(--muted) !important;
+    font-size: 0.88rem !important;
+}
+
+/* ===== File info card ===== */
+.file-card {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.75rem 1rem;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    width: 100%;
+    max-width: 480px;
+}
+.file-card-icon { font-size: 1.5rem; }
+.file-card-name {
+    font-weight: 600;
+    color: var(--text);
+    font-size: 0.95rem;
+}
+
+/* ===== Buttons ===== */
+.btn-primary {
+    background: var(--accent);
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    padding: 0.6rem 1.5rem;
+    font-weight: 600;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+.btn-primary:hover { background: var(--accent-hover); }
+.btn-secondary {
+    background: transparent;
+    color: var(--muted);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 0.6rem 1.5rem;
+    font-weight: 500;
+    font-size: 0.9rem;
+    cursor: pointer;
+}
+
+/* ===== Analyzing stages ===== */
+.analyzing-container {
+    max-width: 420px;
+    width: 100%;
+    padding: 1rem 0;
+}
+.analyzing-title {
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: var(--text);
+    text-align: center;
+    margin-bottom: 1.2rem;
+}
+.stage {
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+    padding: 0.4rem 0;
+    font-size: 0.92rem;
+}
+.stage-done { color: var(--success); }
+.stage-active { color: var(--accent); font-weight: 600; }
+.stage-pending { color: var(--muted); }
+.stage-icon { width: 1.2rem; text-align: center; }
+
+/* ===== Paper ready ===== */
+.paper-header {
+    text-align: center;
+    padding: 1rem 0 0.5rem;
+}
+.paper-title {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--text);
+    margin: 0;
+}
+.paper-meta {
+    font-size: 0.88rem;
+    color: var(--muted);
+    margin-top: 0.2rem;
+}
+.ready-prompt {
+    font-size: 0.95rem;
+    color: var(--muted);
+    text-align: center;
+    margin: 0.5rem 0 0.4rem;
+}
+
+/* ===== Suggested questions ===== */
+.suggested-questions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.45rem;
+    justify-content: center;
+    margin: 0.4rem 0 1rem;
+}
+.suggested-btn {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    padding: 0.4rem 0.9rem;
+    font-size: 0.82rem;
+    color: var(--text);
+    cursor: pointer;
+    transition: border-color 0.2s, background 0.2s;
+}
+.suggested-btn:hover {
+    border-color: var(--accent);
+    background: rgba(99,102,241,0.06);
+}
+
+/* ===== Chat layout — fixed bottom input, scrollable messages ===== */
+.chat-layout {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    width: 100%;
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 0 1rem;
+    box-sizing: border-box;
+}
+.chat-header {
+    flex-shrink: 0;
+    text-align: center;
+    padding: 0.6rem 0 0.3rem;
+}
+.chat-messages {
+    flex: 1;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+    padding: 0.5rem 0;
+}
+.chat-input-wrapper {
+    flex-shrink: 0;
+    padding: 0.6rem 0 100px;
+}
+
+/* ===== Chat messages ===== */
+.msg {
+    display: flex;
+    flex-direction: column;
+    max-width: 85%;
+    animation: fadeIn 0.3s ease;
+}
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(6px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+.msg-user { align-self: flex-end; }
+.msg-assistant { align-self: flex-start; }
+.msg-label {
+    font-size: 0.72rem;
+    font-weight: 600;
+    color: var(--muted);
+    margin-bottom: 0.2rem;
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+}
+.msg-user .msg-label { justify-content: flex-end; }
+.msg-bubble {
+    padding: 0.65rem 0.9rem;
+    border-radius: 10px;
+    font-size: 0.9rem;
+    line-height: 1.5;
+    color: var(--text);
+}
+.msg-user .msg-bubble {
+    background: var(--user-bubble);
+    border-bottom-right-radius: 4px;
+}
+.msg-assistant .msg-bubble {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-bottom-left-radius: 4px;
+}
+
+/* ===== Sources card ===== */
+.sources-card {
+    margin-top: 0.6rem;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    overflow: hidden;
+    background: var(--card);
+}
+.sources-header {
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: var(--muted);
+    padding: 0.4rem 0.65rem;
+    border-bottom: 1px solid var(--border);
+}
+.source-item {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.35rem 0.65rem;
+    font-size: 0.8rem;
+    color: var(--text);
+}
+.source-item:not(:last-child) {
+    border-bottom: 1px solid var(--border);
+}
+
+/* ===== Thinking ===== */
+.thinking-text {
+    color: var(--muted);
+    font-size: 0.85rem;
+    font-style: italic;
+}
+
+/* ===== Input bar ===== */
+.input-bar {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 0.35rem 0.5rem;
+    width: 100%;
+    max-width: 560px;
+    margin: 0 auto;
+}
+.input-bar .attach-btn {
+    background: none;
+    border: none;
+    font-size: 1.1rem;
+    cursor: pointer;
+    padding: 0.25rem;
+    color: var(--muted);
+}
+.input-bar .attach-btn:hover { color: var(--accent); }
+
+/* ===== Streamlit widget overrides ===== */
+.stTextInput > div > div > input {
+    background: transparent !important;
+    border: none !important;
+    color: var(--text) !important;
+    font-size: 0.9rem !important;
+}
+.stTextInput > div > div > input:focus { box-shadow: none !important; }
+.stTextInput > div { background: transparent !important; border: none !important; }
+.stProgress > div > div > div { background: var(--accent) !important; }
+
+/* ===== Sidebar ===== */
+.sidebar-brand {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--accent);
+    margin-bottom: 1.5rem;
+}
+.sidebar-section-label {
+    font-size: 0.7rem;
+    font-weight: 600;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-top: 1rem;
+    margin-bottom: 0.5rem;
+}
+.sidebar-divider {
+    border: none;
+    border-top: 1px solid var(--border);
+    margin: 1rem 0;
+}
+section[data-testid="stSidebar"] .stMarkdown p { color: var(--text); }
+section[data-testid="stSidebar"] .stMarkdown h1,
+section[data-testid="stSidebar"] .stMarkdown h2,
+section[data-testid="stSidebar"] .stMarkdown h3 { color: var(--text); }
+
+/* ===== Scrollbar ===== */
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
